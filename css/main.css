@@ -1,0 +1,12 @@
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+.p-2 {
+    padding: 2rem;
+}
+
+.is-text-centered {
+    text-align: center;
+}
