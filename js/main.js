@@ -130,6 +130,7 @@
                 }); // This is bound.
 
                 this.marker.addListener('click', () => {
+                    this.removeActive();
                     this.contentString = `<div class="info-window-content"><div class="title"><b>${data.name}</b></div>
                         <div class="content"><a href="${this.URL}">${this.URL}</a></div>
                         <div class="content">${this.street}</div>
@@ -152,13 +153,17 @@
                 });
 
                 this.bounce = (place, evt) => {
-                    let active = doc.querySelector('#results .is-active');
-                    if (active) {
-                        active.classList.remove('is-active')
-                    }
+                    this.removeActive();
                     google.maps.event.trigger(this.marker, 'click');
                     evt.currentTarget.classList.add('is-active');
                 };
+            }
+
+            removeActive() {
+                let active = doc.querySelector('#results .is-active');
+                if (active) {
+                    active.classList.remove('is-active')
+                }
             }
 
             get foursquareURL() {
